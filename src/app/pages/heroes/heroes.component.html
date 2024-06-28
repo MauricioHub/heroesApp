@@ -1,0 +1,37 @@
+<h1>
+    Listado de Heroes</h1>
+<hr>
+
+<div class="row">
+    <div class="col float-right">
+        <button routerLink="/heroe/nuevo" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </div>
+</div>
+
+<table class="table mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Poder</th>
+            <th scope="col">Vivo</th>
+            <th scope="col">Tools</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let heroe of heroes; let i= index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ heroe.nombre }}</td>
+            <td>{{ heroe.poder }}</td>
+            <td>
+                <span *ngIf="heroe.vivo" class="badge text-bg-success">Vivo</span>
+                <span *ngIf="!heroe.vivo" class="badge text-bg-danger">Muerto</span>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table>

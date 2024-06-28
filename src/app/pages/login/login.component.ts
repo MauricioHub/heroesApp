@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit{
         localStorage.setItem('email', this.usuario.email);
       }
 
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/heroe/nuevo');
 
     }, (err) => {
       console.log(err.error.error.message);
