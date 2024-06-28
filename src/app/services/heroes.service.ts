@@ -23,11 +23,25 @@ export class HeroesService {
     );
   }
 
+  actualizarHeroe(heroe: HeroeModel){
+
+    const heroeTemp = {
+      ...heroe
+    };
+    delete heroeTemp.id;
+
+    return this.http.put(`${this.url}/heroes/${heroe.id}.json`, heroeTemp);
+  }
+
   getHeroes(){
     return this.http.get(`${this.url}/heroes.json`)
     .pipe(
       map( resp => this.crearArreglo(resp))
     );
+  }
+
+  getHeroe(id: string){
+    return this.http.get(`${this.url}/heroes/${id}.json`);
   }
 
   private crearArreglo(heroesObj: object){
@@ -40,5 +54,9 @@ export class HeroesService {
       heroes.push(heroe);
     });
     return heroes;
+  }
+
+  borrarHeroe(id: string){
+    return this.http.delete(`${this.url}/heroes/${id}.json`);
   }
 }
